@@ -1,0 +1,575 @@
+﻿<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="~/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="~/images/favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/wfmi-style.css">
+    <link rel="stylesheet" href="~/Content/style.css">
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/unob")
+    @Scripts.Render("~/bundles/unobval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/popper")
+    @Scripts.Render("~/bundles/carousel")
+    @Scripts.Render("~/bundles/Counter")
+    @Scripts.Render("~/bundles/waypoints")
+    @Scripts.Render("~/bundles/meanmenu")
+    @Scripts.Render("~/bundles/formvalidation")
+    @Scripts.Render("~/bundles/plugins")
+    @Scripts.Render("~/bundles/custom")
+    @RenderSection("scripts", required: false)
+
+    @*<script type="text/javascript">
+            var link = '@Server.HtmlEncode("https://www.google.com/maps/place/Sri+Sai+Hospitals+Attibele/@12.7876944,77.7396863,17z/data=!3m1!4b1!4m5!3m4!1s0x3bae6e03d664a2f7:0xa2f2e112ec55bb9c!8m2!3d12.7876944!4d77.741875")';
+            $(document).ready(function () {
+                $(".fa-map").prop('href', link);
+            });
+
+        </script>*@
+</head>
+<body>
+    @{
+        var servicelink = @Url.Action("Services", "Home");
+        var patientservicelink = @Url.Action("Patient Services", "Home");
+        var facilitylink = @Url.Action("Facilities", "Home");
+    }
+    <!-- Preloader -->
+    @*<div id="preloader">
+            <div class="pr-circle">
+                <div class="pr-circle1 pr-child"></div>
+                <div class="pr-circle2 pr-child"></div>
+                <div class="pr-circle3 pr-child"></div>
+                <div class="pr-circle4 pr-child"></div>
+                <div class="pr-circle5 pr-child"></div>
+                <div class="pr-circle6 pr-child"></div>
+                <div class="pr-circle7 pr-child"></div>
+                <div class="pr-circle8 pr-child"></div>
+                <div class="pr-circle9 pr-child"></div>
+                <div class="pr-circle10 pr-child"></div>
+                <div class="pr-circle11 pr-child"></div>
+                <div class="pr-circle12 pr-child"></div>
+            </div>
+        </div>*@
+    <!-- End Preloader -->
+    <!-- Logo Area -->
+    <section class="logo-area menu-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="~/images/ssh-logo.png" width="100px" alt="">
+                            <h1 style="font-size:20px;">Sri Sai Hospitals</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-9 d-flex align-items-end justify-content-end flex-column">
+                    <div class="top-bar">
+                        <div class="accr">
+                            <img src="~/images/nabh.png" />
+                            <img src="~/images/nabh.png" />
+                        </div>
+                        <div class="top-social text-right">
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item"><a href="https://www.facebook.com/SriSaiHospitalsAttibele" title="Facebook" target="_blank"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+                                @* <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>*@
+                                <li class="list-inline-item"><a href="https://www.google.com/maps?ll=12.787694,77.741875&z=14&t=m&hl=en-US&gl=IN&mapclient=embed&cid=11741694649899006876" title="Location" target="_blank"><i class="fa fa-map"></i></a></li>
+                                <li class="list-inline-item">
+                                    <span><button type="button" data-toggle="modal" data-target="#model-callback-box"><i class="fa fa-clock-o"></i> Request a Call Back</button></span>
+                                    <!-- Appointment Box -->
+                                    <div class="modal fade" id="model-callback-box">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            @Html.Partial("_CallBackForm", new SSH.Web.Models.EmailModel())
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="list-unstyled list-inline">
+                                <li class="list-inline-item"><i class="medical-icon-i-emergency text-danger" aria-hidden="true"></i>Emergency: +8296333399</li>
+                                @*<li class="list-inline-item"><i class="fa fa-clock-o" aria-hidden="true"></i>Mon - Sun 7:30am - 9:30pm</li>*@
+                                <li class="list-inline-item">
+                                    <i class="fa fa-envelope-o" aria-hidden="true"></i><a href="#" data-toggle="modal" data-target="#model-box-mail" class="__cf_email__">enquiry@srisaihospitals.co.in</a>
+                                    <div class="modal fade" id="model-box-mail">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content text-center">
+                                                <div class="medel-box-top">
+                                                    <h4>Email</h4>
+                                                    <img src="~/images/heartbeat.png" alt="">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </div>
+                                                @Html.Partial("_EmailForm", new SSH.Web.Models.EmailModel())
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="main-menu text-right">
+                        <ul class="list-unstyled list-inline">
+                            <li class="list-inline-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="list-inline-item">@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li class="list-inline-item mega-menu">
+                                <a href="@Url.Action("Services","Home")">Specialties  <i class="fa fa-angle-down"></i></a>
+                                <div class="mega-box">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="specialitiesDetails#Accident">Accident & trauma  </a>
+                                                    <a href="specialitiesDetails#Anaesthesiology">Anaesthesiology</a>
+                                                    <a href="specialitiesDetails#General Medicine">General Medicine</a>
+                                                    <a href="specialitiesDetails#Nephrology">Nephrology</a>
+                                                    <a href="specialitiesDetails#Dialysis">Dialysis</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="specialitiesDetails#Obstetric">Obstetric & Gynaecology</a>
+                                                    <a href="specialitiesDetails#Orthopaedics">Orthopaedics & Sports Medicine</a>
+                                                    <a href="#">Joint Replacements</a>
+                                                    <a href="specialitiesDetails#Dentistry">Dentistry</a>
+                                                    <a href="specialitiesDetails#Diabetes">Diabetes & Heart Care</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="specialitiesDetails#Paediatrics">Paediatrics</a>
+                                                    <a href="specialitiesDetails#Pulmonology">Pulmonology</a>
+                                                    <a href="specialitiesDetails#General Surgery">General Surgery</a>
+                                                    <a href="specialitiesDetails#Neurosurgery">Neurosurgery</a>
+                                                    <a href="specialitiesDetails#Dermatology">Dermatology</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="specialitiesDetails#Ophthalmology">Ophthalmology</a>
+                                                    <a href="specialitiesDetails#Physiotherapy">Physiotherapy</a>
+                                                    <a href="specialitiesDetails#ENT">ENT</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<div class="col-md-3">
+                                                <div class="m-doc">
+                                                    <h6>Our Doctors</h6>
+                                                    <div class="m-slider owl-carousel">
+                                                        <div class="slider-item">
+                                                            <img src="~/images/dr-danajaya-reddy.png" alt="" class="img-fluid">
+                                                            <p>Dr.Dhananjay Reddy, Chairman</p>
+                                                        </div>
+                                                        <div class="slider-item">
+                                                            <img src="~/images/dr-bhanuchandra.png" alt="" class="img-fluid">
+                                                            <p>Dr. Bhanuchandra, Neuro & Spine Surgeon</p>
+                                                        </div>
+                                                        <div class="slider-item">
+                                                            <img src="~/images/CBPatil.png" alt="" class="img-fluid">
+                                                            <p>Dr. Chanabasava Patil, Orthopaedics Surgeon</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>*@
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-inline-item mega-menu">
+                                <a href="@Url.Action("Packages", "Home")">Patient Services <i class="fa fa-angle-down"></i></a>
+                                <div class="mega-box">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    @Html.ActionLink("Health Check-up Packages", "Packages", "Home")
+                                                    @Html.ActionLink("Diagnostic Services", "DiagnosticServices", "Home")
+                                                    @Html.ActionLink("Outpatient Services", "OutPatientService", "Home")
+                                                    @Html.ActionLink("Admission & Discharge Procedure", "AdmissionDischargeProcedure", "Home")
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    @Html.ActionLink("Inpatient Services", "InPatientServices", "Home")
+                                                    @Html.ActionLink("Insurance", "Insurance", "Home")
+                                                    @Html.ActionLink("Ambulance Facility", "AmbulanceServices", "Home")
+                                                    <a href="#">Ask a Doctor</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    @Html.ActionLink("Visitor Information", "VisitorInformation", "Home")
+                                                    <a href="#">Patient Voice</a>
+                                                    <a href="#">Doctor's Appointment</a>
+                                                    <a href="#">Health Byte</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="#">Virtual Tour</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+
+
+                            <li class="list-inline-item mega-menu">
+                                <a href="@Url.Action("Facilities", "Home")">Facilities <i class="fa fa-angle-down"></i></a>
+                                <div class="mega-box">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="facilitiesDetails#Outpatient">Outpatient Department</a>
+                                                    <a href="facilitiesDetails#Pharmacy">Pharmacy</a>
+                                                    <a href="facilitiesDetails#Emergency">Emergency Department</a>
+                                                    <a href="facilitiesDetails#Laboratory">Laboratory Service</a>
+                                                    <a href="facilitiesDetails#Ward">Ward (General, Semi Private,Private and DELUXE Room)</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="facilitiesDetails#Combined Critical">Combined Critical Care ICU (Medical and Surgical)</a>
+                                                    <a href="facilitiesDetails#Neonatal">Neonatal Intensive Care unit</a>
+                                                    <a href="facilitiesDetails#Labour">Labour, Delivery and Recovery Unit</a>
+                                                    <a href="facilitiesDetails#Dialysis">Dialysis</a>
+                                                    <a href="facilitiesDetails#Major">Major and Minor Operation Theatres</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="facilitiesDetails#CSSD">CSSD</a>
+                                                    <a href="facilitiesDetails#X- ray">X- ray Unit and CT SCAN</a>
+                                                    <a href="facilitiesDetails#Physiotherapy">Physiotherapy </a>
+                                                    <a href="#ECHO">ECHO and TMT </a>
+                                                    <a href="facilitiesDetails#Dietary">Dietary</a>
+                                                    <a href="facilitiesDetails#Bronchoscopy">Bronchoscopy </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <div class="m-dept">
+                                                <div class="dept-box">
+                                                    <a href="facilitiesDetails#Ambulance">Ambulance Service</a>
+                                                    <a href="facilitiesDetails#TPA">TPA and Corporate Services</a>
+                                                    <a href="facilitiesDetails#Medical">Medical Record Department</a>
+                                                    <a href="facilitiesDetails#GI">GI Endoscopy  </a>
+                                                    <a href="facilitiesDetails#Ultrasound">Ultrasound imaging </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item">@Html.ActionLink("Doctors", "Doctors", "Home")</li>
+
+                            <li class="list-inline-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Logo Area -->
+    <!-- Mobile Menu -->
+    <section class="mobile-menu-area menu-sticky sticky" id="btt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="mobile-menu">
+                        <nav id="dropdown">
+
+                            <!--<a href="#"><img src="~/images/newLogo.png" alt=""></a>-->
+                            <a href="#"><img src="~/images/ssh-logo.png" width="70px" alt=""></a>
+                            <ul class="list-unstyled">
+                                <li class="list-inline-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                                <li class="list-inline-item">@Html.ActionLink("About Us", "About", "Home")</li>
+                                <li class="list-inline-item">
+                                    <a href="@Url.Action("Services", "Home")">Specialties</a>
+                                    <ul class="dropdown list-unstyled">
+
+
+                                        <li><a href="specialitiesDetails#Accident">Accident & trauma  </a></li>
+                                        <li> <a href="specialitiesDetails#Anaesthesiology">Anaesthesiology</a></li>
+                                        <li> <a href="specialitiesDetails#General Medicine">General Medicine</a></li>
+                                        <li><a href="specialitiesDetails#Nephrology">Nephrology</a></li>
+                                        <li><a href="specialitiesDetails#Dialysis">Dialysis</a></li>
+
+
+                                        <li> <a href="specialitiesDetails#Obstetric">Obstetric & Gynaecology</a></li>
+                                        <li> <a href="specialitiesDetails#Orthopaedics">Orthopaedics & Sports Medicine</a></li>
+                                        <li><a href="#">Joint Replacements</a></li>
+                                        <li> <a href="specialitiesDetails#Dentistry">Dentistry</a></li>
+                                        <li> <a href="specialitiesDetails#Diabetes">Diabetes & Heart Care</a></li>
+
+                                        <li><a href="specialitiesDetails#Paediatrics">Paediatrics</a></li>
+                                        <li> <a href="specialitiesDetails#Pulmonology">Pulmonology</a></li>
+                                        <li> <a href="specialitiesDetails#General Surgery">General Surgery</a></li>
+                                        <li> <a href="specialitiesDetails#Neurosurgery">Neurosurgery</a></li>
+                                        <li> <a href="specialitiesDetails#Dermatology">Dermatology</a></li>
+
+                                        <li> <a href="specialitiesDetails#Ophthalmology">Ophthalmology</a></li>
+                                        <li> <a href="specialitiesDetails#Physiotherapy">Physiotherapy</a></li>
+                                        <li> <a href="specialitiesDetails#ENT">ENT</a></li>
+
+
+
+                                    </ul>
+                                </li>
+                                <li class="list-inline-item">@Html.ActionLink("Doctors", "Doctors", "Home")</li>
+                                <li class="list-inline-item">
+                                    <a href="@Url.Action("Packages", "Home")">Patient Services</a>
+                                    <ul class="dropdown list-unstyled">
+                                        <li>@Html.ActionLink("Health Check-up Packages", "Packages", "Home")</li>
+                                        <li>@Html.ActionLink("Diagnostic Services", "DiagnosticServices", "Home")</li>
+                                        <li>@Html.ActionLink("Outpatient Services", "OutPatientService", "Home")</li>
+                                        <li>@Html.ActionLink("Admission & Discharge Procedure", "AdmissionDischargeProcedure", "Home")</li>
+                                        <li>@Html.ActionLink("Inpatient Services", "InPatientServices", "Home")</li>
+                                        <li>@Html.ActionLink("Insurance", "Insurance", "Home")</li>
+                                        <li>@Html.ActionLink("Ambulance Facility", "AmbulanceServices", "Home")</li>
+                                        <li><a href="#">Ask a Doctor</a></li>
+                                        <li>@Html.ActionLink("Visitor Information", "VisitorInformation", "Home")</li>
+                                        <li><a href="#">Patient Voice</a></li>
+                                        <li><a href="#">Doctor's Appointment</a></li>
+                                        <li><a href="#">Health Byte</a></li>
+                                        <li><a href="#">Virtual Tour</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a href="@Url.Action("Facilities", "Home")">Facilities</a>
+                                    <ul class="dropdown list-unstyled">
+
+
+                                        <li>
+                                            <a href="facilitiesDetails#Outpatient">Outpatient Department</a>
+                                        </li>
+                                        <li>  <a href="facilitiesDetails#Pharmacy">Pharmacy</a></li>
+
+                                        <li><a href="facilitiesDetails#Emergency">Emergency Department</a></li>
+                                        <li><a href="facilitiesDetails#Laboratory">Laboratory Service</a></li>
+                                        <li><a href="facilitiesDetails#Ward">Ward (General, Semi Private,Private and DELUXE Room)</a></li>
+                                
+
+                                        <li> <a href="facilitiesDetails#Combined Critical">Combined Critical Care ICU (Medical and Surgical)</a></li>
+                                        <li> <a href="facilitiesDetails#Neonatal">Neonatal Intensive Care unit</a></li>
+                                        <li> <a href="facilitiesDetails#Labour">Labour, Delivery and Recovery Unit</a></li>
+                                        <li> <a href="facilitiesDetails#Dialysis">Dialysis</a></li>
+                                        <li><a href="facilitiesDetails#Major">Major and Minor Operation Theatres</a></li>
+
+
+                                        <li> <a href="facilitiesDetails#CSSD">CSSD</a></li>
+                                        <li> <a href="facilitiesDetails#X- ray">X- ray Unit and CT SCAN</a></li>
+                                        <li><a href="facilitiesDetails#Physiotherapy">Physiotherapy </a></li>
+                                <li><a href="#ECHO">ECHO and TMT </a>
+                                <li><a href="facilitiesDetails#Dietary">Dietary</a></li>
+                                <li> <a href="facilitiesDetails#Bronchoscopy">Bronchoscopy </a></li>
+
+
+                                <li> <a href="facilitiesDetails#Ambulance">Ambulance Service</a></li>
+                                <li> <a href="facilitiesDetails#TPA">TPA and Corporate Services</a></li>
+                                <li> <a href="facilitiesDetails#Medical">Medical Record Department</a></li>
+                                <li> <a href="facilitiesDetails#GI">GI Endoscopy  </a></li>
+                                <li><a href="facilitiesDetails#Ultrasound">Ultrasound imaging </a></li>
+
+
+
+
+
+                              
+                            </ul>
+                                </li>
+                                <li class="list-inline-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                <div class="text-center" style="float:left; width:100%;">
+                                    <a href="https://www.facebook.com/SriSaiHospitalsAttibele" title="Facebook" target="_blank">
+                                        <i class="fa fa-facebook-official" style="color:#ffffff; font-size:20px; border:none; float:none;" aria-hidden="true"></i>
+                                    </a>
+
+                                    <a href="https://www.google.com/maps?ll=12.787694,77.741875&z=14&t=m&hl=en-US&gl=IN&mapclient=embed&cid=11741694649899006876" title="Location" target="_blank">
+                                        <i class="fa fa-map" style="color:#ffffff; font-size:20px; border:none; float:none;"></i>
+                                    </a>
+                                </div>
+                            </ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Mobile Menu -->
+    @RenderBody()
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="findus">
+                        <h4>Find Us</h4>
+                        <p>Sri Sai Hospitals is a Multi-Specialty hospital with 100 bed capacity located in Southern part of Bengaluru near town of Attibele. We have state of the art medical facilities along with dedicated staff for providing superior quality healthcare. The hospital provides 24/7 emergency care supported by quick response team capable of handling any emergency situation</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-map-marker"></i>Attibele,Bangalore</li>
+                            <li><i class="fa fa-envelope"></i><a href="#" class="__cf_email__">hr@srisaihospitals.co.in</a></li>
+                            <li><i class="fa fa-phone"></i>+8296333399</li>
+                        </ul>
+                    </div>
+                </div>
+                @*<div class="col-md-3">
+                                <div class="qlink">
+                        <h4>Quick Links</h4>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-angle-right"></i><a href="#">Generel Information</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Blood Bank</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Medical Research</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Emergency Service</a></li>
+                            <li><i class="fa fa-angle-right"></i><a href="#">Ambulance</a></li>
+                        </ul>
+                    </div>
+                        </div>*@
+
+                @*<div class="col-md-3">
+                                <div class="newsletter">
+                            <h4>Newsletter</h4>
+                            <form action="#">
+                                <input type="text" name="name" placeholder="Your Name" required>
+                                <input type="text" name="email" placeholder="Your Email" required>
+                                <button type="submit">Register</button>
+                            </form>
+                        </div>
+                    </div>*@
+                <div class="col-md-5">
+                    <div class="tpost">
+                        <h4>Locate Us</h4>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7781.725415458505!2d77.7374976!3d12.7874224!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae6e03d664a2f7%3A0xa2f2e112ec55bb9c!2sSri+Sai+Hospitals+Attibele!5e0!3m2!1sen!2sin!4v1541300020866" class="img-responsive" frameborder="0" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="f-menu text-center">
+                        <ul class="menu list-unstyled list-inline">
+                            <li class="list-inline-item">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="list-inline-item">@Html.ActionLink("About Us", "About", "Home")</li>
+                            <li class="list-inline-item"><a href="@servicelink">Service</a></li>
+                            <li class="list-inline-item">@Html.ActionLink("Doctors", "Doctors", "Home")</li>
+                            <li class="list-inline-item"><a href="@patientservicelink">Patient Service</a></li>
+                            <li class="list-inline-item"><a href="@facilitylink">Facilities</a></li>
+                            @*<li class="list-inline-item"><a href="#">Blog</a></li>*@
+                            <li class="list-inline-item">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                        <p>Copyright &copy; 2020 Sri Sai hospitals</p>
+                        @*<ul class="social list-unstyled list-inline">
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-youtube"></i></a></li>
+                                <li class="list-inline-item"><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            </ul>*@
+                    </div>
+                    <div class="back-to-top text-center">
+                        <a data-scroll href="#btt"><img src="~/images/backtotop.png" alt="" class="img-fluid"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="wtspp">
+        <a href="https://wa.me/+8296333399" id="wtsapp" target="_blank"> <img src="~/images/whatsapp.gif" id="wtspp"></a>
+       
+    </div>
+
+   
+
+    <!-- End Footer Section -->
+    <!-- =========================================
+    JavaScript Files
+    ========================================== -->
+
+    <div id="container">
+        <div class="box-overlay"></div>
+        <div id="success-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message"><h1 class="alert">Your request is being submitted!</h1></div>
+            <button class="button-box">Continue to Home</button>
+        </div>
+    </div>
+    @*<div id="errorContainer">
+            <div id="error-box">
+                <div class="dot"></div>
+                <div class="dot two"></div>
+                <div class="face2">
+                    <div class="eye"></div>
+                    <div class="eye right"></div>
+                    <div class="mouth sad"></div>
+                </div>
+                <div class="shadow move"></div>
+                <div class="message">
+                    <h1 class="alert">Error!</h1>
+                    <button class="button-box"><h1 class="red">try again</h1></button>
+                </div>
+            </div>
+        </div>*@
+    <script>
+        $(document).ready(function () {
+          $('.button-box').click(function () {
+                window.location.href = '@Url.Action("Index","Home")';
+            });
+            $("a[href='#btt']").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+                return false;
+            });
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        function startRequest() {
+            $("#container").show();
+         //   $("#errorContainer").hide();
+        }
+    </script>
+</body>
+
+</html>

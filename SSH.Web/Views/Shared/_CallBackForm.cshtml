@@ -1,0 +1,77 @@
+﻿@model SSH.Web.Models.EmailModel
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnCallBack").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest('form').submit();
+            $("#model-callback-box").modal('hide');
+            $("#btnCallBack").prop('disabled', true);
+            @*$("#container").show();
+            $('.button-box').click(function () {
+                window.location.href = = '@Url.Action("Index","Home")';
+            });*@
+        })
+    });
+    //\\\\\\\ JS  retrun message SucccessPost or FailPost
+    function SuccessCallBackMessage() {
+        $("#model-callback-box").modal('hide');
+        $("#btnCallBack").prop('disabled', true);
+    }
+    function FailCallBackMessage() {
+      //  alert("Something went wrong while submitting email.");
+    }
+</script>
+<div class="modal-content text-center">
+    <div class="medel-box-top">
+        <h4>Request a Call Back</h4>
+        <img src="~/images/heartbeat.png" alt="">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
+    @using (Ajax.BeginForm("Email", "Home", null, new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnSuccess = "SuccessCallBackMessage",
+        OnFailure = "FailCallBackMessage",
+        UpdateTargetId = "successMessageCallBack",
+        OnBegin = "startRequest"
+    }, new { id = "frmCallBack" })) // set new Id name for  Form
+    {
+        @Html.AntiForgeryToken()
+    <div class="">
+        <input type="hidden" name="FormName" id="FormName" value="RequestCallBack" />
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" id="Name" name="Name" placeholder="Full Name" required>
+                <input type="text" id="Email" name="Email" placeholder="Email Address" required>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="PhoneNo" name="PhoneNo" placeholder="Phone Number" required>
+                <input type="text" id="City" name="city" placeholder="City" required>
+            </div>
+            <div class="col-md-12">
+                <textarea name="Message" id="Message" placeholder="Message" required></textarea>
+            </div>
+        </div>
+    </div>
+        <button type="submit" id="btnCallBack">Submit Request</button>
+    }
+    <div id="successMessageCallBack"></div>
+    @*<div id="container">
+        <div class="box-overlay"></div>
+        <div id="success-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message"><h1 class="alert">Success!</h1></div>
+            <button class="button-box">Continue to Home</button>
+        </div>
+    </div>*@
+</div>
+
