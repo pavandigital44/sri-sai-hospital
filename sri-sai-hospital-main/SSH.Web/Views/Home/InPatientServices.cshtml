@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "Inpatient Services Sri Sai Hospitals";
+}
+<head>
+    <style>
+        /*----this is to remove the sticky header with menus*/
+        .menu-sticky.sticky {            
+            position:relative;            
+        }
+    </style>
+
+</head>
+<section class="inpatientServices">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ip-top">
+                    <div class="text-center">
+                        <h2 class="">Inpatient Services</h2>
+                        <img src="~/images/heartbeat.png" alt="">
+                    </div>
+                   @* <h5>Types of rooms available</h5>*@
+                    @* <img src="~/images/heartbeat.png" alt="">*@
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-4">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#generalWard">General Ward (Male & Female)</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#paediatricWard">Paediatric Ward</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#semiPrivateRoom">Semi Private Room</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="privateRoom">Private Room</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#deluxeRoom">Deluxe Room</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#ICU">Intensive Care Unit (ICU)</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#HDU">High Dependency Unit (HDU)</a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <a class="roomTypeLink" href="#NICU">Neonatal Intensive Care Unit</a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <h3>In-Patient Guidelines:</h3>
+                <hr class="orangeHdLine" />
+                <ul class="mar-left-20">
+                    <li>The bed charge is calculated from the time of admission.</li>
+                    <li>Upgrade/downgrade of the class of bed affects your billing.</li>
+                    <li>When you move up to a higher class, the billing from day one will be as per the higher class.</li>
+                    <li>When you move down to a lower class, the billing from the day of transfer will be as per the lower class. Change in bed class after admission is done strictly as per bed availability.</li>
+                    <li>The patient may be transferred to a government/municipal hospital for non-payment or any other administrative reason.</li>
+                    <li>Interim bill statements will be made available to you on a daily basis. We would appreciate it if the amount accrued to your account is settled within 24 hours.</li>
+                    <li>We request that only one relative be in the room with the patient.</li>
+                    <li>Visitors must have visitor passes to go up to the wards.</li>
+                    <li>When the patient is shifted to the critical care unit, relatives have to vacate the room.</li>
+                    <li>Consumption of alcohol, cigarettes, chewing gum and tobacco, as well as spitting, is strictly prohibited.</li>
+                    <li>A hygienic environment is essential for your health. Help us maintain our standards.</li>
+                    <li>Keep the toilets clean and dry.</li>
+                    <li>Use the dustbins for disposal of any waste.</li>
+                    <li>We take pride in serving you, giving tips is prohibited.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row  mt-5">
+            <div class="col-md-12" id="generalWard">
+                <h3 class="roomDescription">General Ward</h3>
+                <hr class="orangeHdLine" />
+                <p>
+                    It has separate Male and Female General Ward. The General Ward is  hygienic, spacious, well ventilated and natural light comes generously which help in quick healing of patients. Screens are provided for each bed for patient’s privacy. Attender can meet patient in prescribed visiting hours.
+                </p>
+            </div>
+
+            <div class="col-md-12" id="paediatricWard">
+                <h3 class="roomDescription">Paediatric Ward</h3>
+                <hr class="orangeHdLine" />
+                <p>We have separate children’s ward to give them a light environment along with keeping them safe from any acquired infection. Nurses who are highly trained in child care monitors this ward.</p>
+            </div>
+
+            <div class="col-md-12" id="semiPrivateRoom">
+                <h3 class="roomDescription">Semi-Private Room</h3>
+                <hr class="orangeHdLine" />
+                <p>These are twin sharing rooms with enough privacy. It has 2 patient beds along with 2 attender beds. The room is divided by nice wooden frame. Patient attender is allowed to stay with patient.</p>
+            </div>
+
+            <div class="col-md-12" id="privateRoom">
+                <h3 class="roomDescription">Private Room</h3>
+                <hr class="orangeHdLine" />
+                <p>
+                    These rooms have only one patient and one attender bed for ample privacy and comfort.
+                    In Semi-Private and Private Rooms, we have nurse calling bell facility for ease of patient in calling nurses for any assistance. It has other amenities like TV, hot water etc for patient and attender’s comfort.
+                </p>
+            </div>
+
+            <div class="col-md-12" id="deluxeRoom">
+                <h3 class="roomDescription">Deluxe Room</h3>
+                <hr class="orangeHdLine" />
+                <p>
+                    We have highly luxurious rooms with facilities like nurse call bell system, locker, Microwave oven, TV, sitting lounge area, comfortable attender cot along with many more facilities.
+                </p>
+            </div>
+
+            <div class="col-md-12" id="ICU">
+                <h3 class="roomDescription">Intensive Care Unit (ICU)</h3>
+                <hr class="orangeHdLine" />
+                <p>It is 12 bedded facility which is fully equipped with modern gadgets and equipments and monitored round the clock by highly skilled team of Intensivists and nurses to tackle any critical situation. We maintain 1:1 patient to nurse ratio for all critical patients.</p>
+            </div>
+
+            <div class="col-md-12" id="HDU">
+                <h3 class="roomDescription">High Dependency Unit (HDU)</h3>
+                <hr class="orangeHdLine" />
+                <p> HDU is an area in a hospital where patients can be cared more extensively than in a normal ward, but not to the point of intensive care. So, it is also known as the intermediate care unit. It is
+                    used as a step-down ICU.
+                </p>
+            </div>
+
+            <div class="col-md-12" id="NICU">
+                <h3 class="roomDescription">Neonatal Intensive Care Unit (NICU)</h3>
+                <hr class="orangeHdLine" />
+                <p>Newborn Intensive care unit is equipped with sophisticated and advanced equipments, is an intensive care unit specialized in the care of ill or premature newborn infants.</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- End Package List -->
