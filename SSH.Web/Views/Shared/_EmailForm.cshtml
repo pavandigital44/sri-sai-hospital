@@ -1,0 +1,77 @@
+﻿@model SSH.Web.Models.EmailModel
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnSendEmail").on("click", function (e) {
+            e.preventDefault();
+            $(this).closest('form').submit();
+            $("#model-box-mail").modal('hide');
+            $("#btnSendEmail").prop('disabled', true);
+        })
+    });
+    //\\\\\\\ JS  retrun message SucccessPost or FailPost
+    function SuccessMailMessage() {
+        //alert("Succcess Post");
+        $("#model-box-mail").modal('hide');
+        $("#btnSendEmail").prop('disabled', true);
+        @*$("#container").show();
+        $('.button-box').click(function () {
+            window.location.href == '@Url.Action("Index","Home")';
+        });*@
+    }
+    function FailMailMessage() {
+      //  alert("Something went wrong while submitting email.");
+
+        //$("#errorContainer").show();
+        //$("#container").hide();
+    }
+</script>
+@using (Ajax.BeginForm("Email", "Home", null, new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "SuccessMailMessage",
+    OnFailure = "FailMailMessage",
+    UpdateTargetId = "successMessage",
+    OnBegin = "startRequest"
+}, new { id = "frmEmail" })) // set new Id name for  Form
+{
+    @Html.AntiForgeryToken()
+    <div class="">
+        <input type="hidden" name="FormName" id="FormName" value="Email" />
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="text" class="form-control" disabled id="Name" name="Name" value="enquiry@srisaihospitals.co.in">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="input-group">
+                <input type="email" class="form-control" id="Email" name="Email" placeholder="Enter Your Email" required="true">
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject" required="true">
+        </div>
+        <div class="col-md-12">
+            <div class="input-group">
+                <textarea class="form-control" placeholder="Enter Your Message" name="Message" id="Message" rows="3" required="true"></textarea>
+            </div>
+        </div>
+    </div>
+    <button type="submit" id="btnSendEmail">Submit</button>
+    @*<div id="container">
+        <div class="box-overlay"></div>
+        <div id="success-box">
+            <div class="dot"></div>
+            <div class="dot two"></div>
+            <div class="face">
+                <div class="eye"></div>
+                <div class="eye right"></div>
+                <div class="mouth happy"></div>
+            </div>
+            <div class="shadow scale"></div>
+            <div class="message"><h1 class="alert">Success!</h1></div>
+            <button class="button-box">Continue to Home</button>
+        </div>
+    </div>*@
+}
+<div id="successMessage"></div>
